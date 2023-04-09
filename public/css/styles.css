@@ -24,7 +24,7 @@ body {
     background-color: #454d6b;
 }
 
-#login {
+.cards {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -15,17 +15,38 @@
     </head>
     <body class="antialiased">
 
-    <div id="update">
+    <div id="update" class="cards">
 
-            <form class="card">
-                <div class="card-header">
-                    <h2>Atualizar</h2>
-                </div>
+        <form class="card" method="POST" action="">
+        @csrf
+                    <div class="card-header" >
+                        <h2>Atualizar Currículo</h2>
+                    </div> 
 
-            </form>
+                    <div class="card-content">
+                    <div class="card-content-area">
+                            <label for="">Nome</label>
+                            <input type="text" name="nome" id="nome" size="50">
+                        </div>
 
-        </div>
+                        <div class="card-content-area">
+                            <label for="">Sobrenome</label>
+                            <input type="text" name="sobrenome" id="sobrenome" size="50">
+                        </div>
 
+                        <div class="card-content-area">
+                            <label for="pdf">Arquivo PDF</label>
+                            <input type="file" name="pdf" id="pdf">
+                        </div>
+
+                        <div class="card-content-area">
+                            <input type="submit" value="Atualizar">
+                        </div>
+                    </div>
+
+        </form>
+
+    </div>
 
     </body>
 </html>

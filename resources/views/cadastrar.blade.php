@@ -15,9 +15,10 @@
     </head>
     <body class="antialiased">
 
-    <div id="join">
+    <div id="join" class="cards">
 
-            <form class="card">
+            <form class="card" method="POST" action="{{route('usuario.store')}}">
+            @csrf
                 <div class="card-header">
                     <h2>Cadastrar</h2>
                 </div>
@@ -25,21 +26,24 @@
                 <div class="card-content">
                     <div class="card-content-area">
                         <label for="usuario">Insira Usuário</label>
-                        <input type="text" id="usuario" autocomplete="off">
+                        <input type="text" name="usuario" id="usuario" >
                     </div>
 
                     <div class="card-content-area">
                         <label for="password">Insira Senha</label>
-                        <input type="password" id="password" autocomplete="off">
+                        <input type="password" name="senha" id="password">
+                    </div>
+
+                    <div class="card-content-area">
                         <label for="password">Repita a Senha</label>
-                        <input type="password" id="password" autocomplete="off">
+                        <input type="password" name="senha2" id="password">
                     </div>
 
-                    <div class="card=content-submit">
-                        <input type="submit" value="Cadastrar" name="cadastrar">
+                    <div class="card=content-area">
+                        <input type="submit" value="Cadastrar">
                     </div>
 
-                    <div class="card-content-previous">
+                    <div class="card-content-area">
                         <a href="/">Voltar</a>
                     </div>
                 </div>

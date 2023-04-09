@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('registro', RegistroController::class, ['except' => ['index']]);
+Route::resource('usuario', UsuarioController::class, ['except' => ['update','destroy', 'show', 'edit']]);
 
-Route::get('/cadastrar', function () {
-    return view('cadastrar');
-});
+Route::get('/', [UsuarioController::class, 'index']);
+//Inserir action para autenticação de usuário
+Route::get('/cadastrar', [UsuarioController::class, 'create']);
+Route::post('/cadastrar.store', [UsuarioController::class, 'store']);
 
-Route::get('/formulario', function () {
-    return view('formulario');
-});
 
-Route::get('/atualizar', function () {
-    return view('atualizar');
-});
+Route::get('/formulario', [RegistroController::class, 'create']);
+Route::post('/formulario.store', [RegistroController::class, 'store']);
+Route::post('/atualizar/{id?}/edit', [RegistroController::class, 'edit']);
+//Route::get('/atualizar/{id?}', [RegistroController::class, 'show']);
+Route::delete('/registro/{id}', [RegistroController::class, 'destroy']);
+
+//Falta inserir: show, update, destroy
+

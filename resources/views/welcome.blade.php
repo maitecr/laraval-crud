@@ -15,9 +15,10 @@
     </head>
     <body class="antialiased">
 
-    <div id="login">
+    <div id="login" class="cards">
 
-            <form class="card">
+            <form class="card" action="">
+            @csrf
                 <div class="card-header">
                     <h2>Login</h2>
                 </div>
@@ -33,11 +34,11 @@
                         <input type="password" id="password" autocomplete="off">
                     </div>
 
-                    <div class="card=content-login">
-                       <a href="/formulario"> <input type="button" value="Login" name="login"> </a>
+                    <div class="card=content-area">
+                      <input type="submit" value="Logar">
                     </div>
                     
-                    <div class="card-content-join">
+                    <div class="card-content-area">
                         <a href="/cadastrar">Realizar Cadastro</a>
                     </div>
                 </div>
