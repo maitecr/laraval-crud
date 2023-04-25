@@ -29,7 +29,16 @@ class RegistroController extends Controller
     public function store(Request $request)
     {
         $dadosFormulario = $request->except('_token');
+
+        if($request -> hasFile('pdf')) {
+            $novoNome = $request->file('pdf')->store('storage','public');
+            $dadosFormulario['pdf'] = $novoNome;
+        
+        }
+
+        //código de insert
         dd($dadosFormulario);
+
         return $dadosFormulario;
     }
 
