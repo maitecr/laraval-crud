@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Curriculo;
+use Storage;
+
 
 class RegistroController extends Controller
 {
@@ -29,25 +32,33 @@ class RegistroController extends Controller
     public function store(Request $request)
     {
         $dadosFormulario = $request->except('_token');
+        $curriculo = new Curriculo();
+        $this->validate($request,$curriculo->rules,$curriculo->messages);
 
         if($request -> hasFile('pdf')) {
-            $novoNome = $request->file('pdf')->store('storage','public');
-            $dadosFormulario['pdf'] = $novoNome;
-        
-        }
+            $arquivo = $request->file('pdf')->store('storage','public');
+            $dadosFormulario['nome_arquivo'] = $arquivo;
+        } 
 
-        //código de insert
-        dd($dadosFormulario);
+        $insert = $curriculo::create($dadosFormulario);
 
-        return $dadosFormulario;
+        if($insert) {
+            return "Dados inseridos";
+        } else {
+            return "Não inseridos";
+        } 
+
+//        dd($dadosFormulario);
+
+ //       return $dadosFormulario;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        return $id;
+        return view('curriculos');    
     }
 
     /**

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UsuarioSeeder extends Seeder
+class UsuariosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,17 +14,17 @@ class UsuarioSeeder extends Seeder
     {
         \DB::table('usuarios')->insert([
             'usuario' => 'maite',
-            'senha' =>  bcrypt('0605'),
+            'senha' => bcrypt('06051993'),
+        ]); 
+
+        \DB::table('usuarios')->insert([
+            'usuario' => 'valquiria',
+            'senha' => bcrypt('87456321'),
         ]);
 
         \DB::table('usuarios')->insert([
-            'usuario' => 'pafuncio',
-            'senha' =>  bcrypt('254896'),
+            'usuario' => 'mesopotania',
+            'senha' => bcrypt('8482659'),
         ]);
-
-        \DB::table('usuarios')->insert([
-            'usuario' => 'griselda',
-            'senha' =>  bcrypt('489415156'),
-        ]);
-    }
+    }   
 }

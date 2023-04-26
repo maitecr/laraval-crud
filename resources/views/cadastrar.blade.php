@@ -17,6 +17,14 @@
 
     <div id="join" class="cards">
 
+            @if(isset($errors) && count($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p> {{$error}} </p>
+                    @endforeach
+                </div>
+            @endif
+
             <form class="card" method="POST" action="{{route('usuario.store')}}">
             @csrf
                 <div class="card-header">

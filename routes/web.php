@@ -27,7 +27,7 @@ Route::post('/cadastrar.store', [UsuarioController::class, 'store']);
 Route::get('/formulario', [RegistroController::class, 'create']);
 Route::post('/formulario.store', [RegistroController::class, 'store']) ; //enctype="multipart/form-data"
 Route::post('/atualizar/{id?}/edit', [RegistroController::class, 'edit']); //enctype="multipart/form-data"
-//Route::get('/atualizar/{id?}', [RegistroController::class, 'show']);
+Route::get('/curriculos', [RegistroController::class, 'show']);
 Route::delete('/registro/{id}', [RegistroController::class, 'destroy']);
 
 //Falta inserir: show, update, destroy

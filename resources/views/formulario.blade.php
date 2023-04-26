@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Registrar Informação</title>
+        <title>Eviar Currículo</title>
 
         <link  rel="stylesheet" href="{{asset('css/styles.css')}}"/>
         <!-- Fonts -->
@@ -16,6 +16,14 @@
     <body class="antialiased">
 
     <div id="create" class="cards">
+
+            @if(isset($errors) && count($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p> {{$error}} </p>
+                    @endforeach
+                </div>
+            @endif
 
             <form class="card" method="POST" action="{{route('registro.store')}}"  enctype="multipart/form-data">
             @csrf

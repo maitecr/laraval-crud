@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Usuario;
+
 
 class UsuarioController extends Controller
 {
@@ -28,8 +30,18 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $dadosFormulario = $request->except('_token');
-        dd($dadosFormulario);
-        return $dadosFormulario;
+        $usuario = new Usuario;
+        $this->validate($request, $usuario->rules, $usuario->messages);
+
+        $insert = $usuario::create($dadosFormulario);
+
+        if($insert) {
+            return "Usuário cadastrado";
+        } else {
+            return "Cadastro não efetuado";
+        }
+       // dd($dadosFormulario);
+       // return $dadosFormulario;
     }
 
     /**
