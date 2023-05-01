@@ -9,25 +9,18 @@ use Storage;
 
 class RegistroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         //return view('welcome');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('formulario');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
 
     public function store(Request $request)
     {
@@ -47,41 +40,58 @@ class RegistroController extends Controller
         } else {
             return "Não inseridos";
         } 
-
-//        dd($dadosFormulario);
-
- //       return $dadosFormulario;
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show()
     {
-        return view('curriculos');    
+       $curriculos = Curriculo::all();
+
+        return view('curriculos', compact('curriculos'));    
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id) //precisa indicar o id - ver como deixar id opcional
+
+    public function edit(int $id) 
     {
-        return view('atualizar', $id);
+        $curriculo = Curriculo::find($id);
+
+        return view('atualizar', compact('curriculo'));  
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function update(Request $request, int $id)
     {
-        //
+        $dadosFormulario = $request->except('_token', 'submit');
+        $curriculo = Curriculo::find($id);
+        $this->validate($request,$curriculo->rules,$curriculo->messages);
+
+        if($request -> hasFile('pdf')) {
+            if($curriculo->getAttributes()['nome_arquivo'] !=NULL)
+                Storage::disk('public')->delete($curriculo->getAttributes()['nome_arquivo']);
+                $arquivo = $request->file('pdf')->store('storage','public');
+                $dadosFormulario['nome_arquivo'] = $arquivo;
+        } 
+
+        $update = $curriculo::update($dadosFormulario);
+
+        if($update) {
+            return view('curriculos');       
+        } 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        return "$id deletado da base de dados";
+        $curriculo = Curriculo::find($id);
+        if($curriculo->getAttributes()['nome_arquivo'] !=NULL) // testa se tinha um nome de arquivo no banco
+        Storage::disk('public')->delete($curriculo->getAttributes()['nome_arquivo']);
+        $delete = $curriculo->delete();
+
+        if($delete) {        
+            return "deletadp";
+        }
+
     }
 }

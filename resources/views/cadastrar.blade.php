@@ -43,8 +43,8 @@
                     </div>
 
                     <div class="card-content-area">
-                        <label for="password">Repita a Senha</label>
-                        <input type="password" name="senha2" id="password">
+                        <label for="password">Confimar Senha</label>
+                        <input type="password" name="confirmar" id="confirmar">
                     </div>
 
                     <div class="card=content-area">

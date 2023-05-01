@@ -14,25 +14,29 @@
 
     </head>
     <body class="antialiased">
+        @foreach($curriculos as $curriculo)
+            <div id="curriculos" class="cards">
+                <div class="card">
+                    <div class="card-header" >
+                        <h1>Currículo nº: {{$curriculo['id']}}</h1>
+                    </div> 
+                    <div class="card-content">
+                        <div class="card-content-area">
+                            <h2>{{$curriculo['nome']}} {{$curriculo['sobrenome']}}</h2>
+                        </div>
 
-    <div id="view" class="cards">
+                        <div class="card-content-area">
+                            <h2>{{$curriculo['cidade']}}</h3>
+                        </div>
 
-    <div class="card-header" >
-
-                <div class="card-content">
-                    <div class="card-content-area">
-                        <h1>NOME + SOBRENOME</h1>
+                        @if(isset($curriculo['nome_arquivo']))
+                            <div class="card-content-area">
+                            <a href='{{ asset("storage/{$curriculo->nome_arquivo}") }}' target="_blank">Abrir PDF</a>
+                            </div>
+                        @endif
                     </div>
-
-                    <div class="card-content-area">
-                        <h1>CIDADE</h1>
-                    </div>
-
-                    <div class="card-content-area">
-                        <h4>LINK CURRICULO</h4>
-                    </div>
-    </div>
-
-
+                </div>
+            </div>
+        @endforeach
     </body>
 </html>

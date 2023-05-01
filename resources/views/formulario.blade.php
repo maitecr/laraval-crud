@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Eviar Currículo</title>
+        <title>Enviar Currículo</title>
 
         <link  rel="stylesheet" href="{{asset('css/styles.css')}}"/>
         <!-- Fonts -->

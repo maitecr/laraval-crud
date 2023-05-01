@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Validator;
 
 
 class UsuarioController extends Controller
@@ -24,14 +25,25 @@ class UsuarioController extends Controller
         return view('cadastrar');
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $dadosFormulario = $request->except('_token');
+        $dadosFormulario['senha'] = bcrypt($dadosFormulario['senha']);
         $usuario = new Usuario;
         $this->validate($request, $usuario->rules, $usuario->messages);
+
+        $validacao = Validator::make($request->all(),[
+                        'senha' => 'required',
+                        'confirmar' => 'required|same:senha',
+                    ]);
+
+        if($validacao -> fails()) {
+            return "Senhas incompatíveis";
+        }
 
         $insert = $usuario::create($dadosFormulario);
 
@@ -43,6 +55,8 @@ class UsuarioController extends Controller
        // dd($dadosFormulario);
        // return $dadosFormulario;
     }
+
+
 
     /**
      * Display the specified resource.

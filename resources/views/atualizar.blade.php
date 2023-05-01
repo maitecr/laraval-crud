@@ -17,21 +17,26 @@
 
     <div id="update" class="cards">
 
-        <form class="card" method="POST" action="">
+        <form class="card" method="put" action="{{route('atualizaProduto', $curriculo['id'])}}" enctype="multipart/form-data">
         @csrf
-                    <div class="card-header" >
-                        <h2>Atualizar Currículo</h2>
-                    </div> 
+                <div class="card-header">
+                    <h2>Atualizar Currículo</h2>
+                </div> 
 
-                    <div class="card-content">
+                <div class="card-content">
                     <div class="card-content-area">
                             <label for="">Nome</label>
-                            <input type="text" name="nome" id="nome" size="50">
+                            <input type="text" name="nome" id="nome" value="{{$curriculo['nome']}}" size="50">
                         </div>
 
                         <div class="card-content-area">
                             <label for="">Sobrenome</label>
-                            <input type="text" name="sobrenome" id="sobrenome" size="50">
+                            <input type="text" name="sobrenome" id="sobrenome" value="{{$curriculo['sobrenome']}}"  size="50">
+                        </div>
+
+                        <div class="card-content-area">
+                            <label for="">Cidade</label>
+                            <input type="text" name="cidade" id="cidade" value="{{$curriculo['cidade']}}" size="50">
                         </div>
 
                         <div class="card-content-area">
@@ -40,10 +45,10 @@
                         </div>
 
                         <div class="card-content-area">
-                            <input type="submit" value="Atualizar">
+                            <input type="submit" name="submit" value="Atualizar">
                         </div>
                     </div>
-
+                </div>
         </form>
 
     </div>
