@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Atualizar</title>
+        <title>Editar</title>
 
         <link  rel="stylesheet" href="{{asset('css/styles.css')}}"/>
         <!-- Fonts -->
@@ -17,7 +17,8 @@
 
     <div id="update" class="cards">
 
-        <form class="card" method="put" action="{{route('atualizaProduto', $curriculo['id'])}}" enctype="multipart/form-data">
+        <form class="card" method="POST" action="{{route('atualizaProduto', $curriculo->id)}}" enctype="multipart/form-data">
+        @method('POST')
         @csrf
                 <div class="card-header">
                     <h2>Atualizar Currículo</h2>

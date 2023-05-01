@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form class="card" method="POST" action="{{route('registro.store')}}"  enctype="multipart/form-data">
+            <form class="card" method="POST" action="{{route('enviar')}}"  enctype="multipart/form-data">
             @csrf
                 <div class="card-header" >
                     <h2>Enviar Currículo</h2>
