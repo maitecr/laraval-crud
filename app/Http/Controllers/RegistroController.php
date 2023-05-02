@@ -44,6 +44,7 @@ class RegistroController extends Controller
     public function show()
     {
        $curriculos = Curriculo::all();
+       $curriculos = Curriculo::paginate(1);
 
         return view('curriculos', compact('curriculos'));    
     }

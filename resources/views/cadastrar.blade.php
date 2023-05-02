@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Cadastro</title>
-
-        <link  rel="stylesheet" href="{{asset('css/styles.css')}}"/>
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-
-    </head>
-    <body class="antialiased">
+@extends('main')
+@section('title', 'Cadastrar Usuário')
 
     <div id="join" class="cards">
 
@@ -25,7 +11,7 @@
                 </div>
             @endif
 
-            <form class="card" method="POST" action="{{route('usuario.store')}}">
+            <form class="card" method="POST" action="{{route('cadastrar.usuario')}}">
             @csrf
                 <div class="card-header">
                     <h2>Cadastrar</h2>
@@ -60,6 +46,5 @@
 
         </div>
 
-
-    </body>
-</html>
+@section('content')
+@endsection

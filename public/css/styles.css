@@ -4,6 +4,38 @@
     font-family: 'Roboto', sans-serif;
 }
 
+:root {
+    --cor-fundo: rgb(34, 41, 37);
+    --cor-hover: rgb(124, 157, 198);
+    --cor-primaria: rgb(231, 241, 236);
+}
+
+.dp-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.dp-menu ul {
+    background-color: var(--cor-fundo);
+}
+
+.dp-menu ul li {
+    display: inline;
+    position: relative;
+}
+
+.dp-menu ul li a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+}
+
+.dp-menu ul li a:hover {
+    background-color: var(--cor-hover);
+}
+
+
 a {
     text-decoration: none;
     padding: 5px;
@@ -18,10 +50,39 @@ a:visited {
     color: rgb(255, 255, 255);
 }
 
+.deletar{
+    background-color: rgba(217, 19, 19, 0.732);
+    color: #fff;
+    border: 2px;
+    text-align: center;
+    width: 271px;
+}
+
+.editar{
+    background-color: rgba(101, 61, 170, 0.732);
+    color: #fff;
+    border: 2px;
+    text-align: center;
+    width: 271px;
+}
+
+.pdf{
+    background-color: rgba(44, 42, 119, 0.732);
+    color: #fff;
+    border: 2px;
+    text-align: center;
+    width: 271px;
+}
+
+
 body {
     padding: 0;
     margin: 0;
     background-color: #454d6b;
+}
+
+.titulos {
+    color: #fff;
 }
 
 .cards {
@@ -64,7 +125,7 @@ body {
 .card-content-area {
     display: flex;
     flex-direction: column;
-    padding:10px 0;
+    padding: 5px 0;
 }
 
 .card-content-area input {
@@ -106,4 +167,9 @@ input[type=button], input[type=submit] {
     border: none;
     border-radius: 5px;
 
+}
+
+.paginacao{
+    color: #fff;
+    text-decoration: none;
 }

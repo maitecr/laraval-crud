@@ -18,18 +18,18 @@ use App\Http\Controllers\UsuarioController;
 //Route::resource('registro', RegistroController::class, ['except' => ['index']]);
 //Route::resource('usuario', UsuarioController::class, ['except' => ['update','destroy', 'show', 'edit']]);
 
-Route::get('/', [UsuarioController::class, 'index']);
+Route::get('/', [UsuarioController::class, 'index'])->name('login');
 //Inserir action para autenticação de usuário
-Route::get('/cadastrar', [UsuarioController::class, 'create']);
-Route::post('/cadastrar.store', [UsuarioController::class, 'store']);
+Route::get('/cadastrar', [UsuarioController::class, 'create'])->name('cadastrar');
+Route::post('/cadastrar.store', [UsuarioController::class, 'store'])->name('cadastrar.usuario');
 
 
-Route::get('/formulario', [RegistroController::class, 'create']);
+Route::get('/formulario', [RegistroController::class, 'create'])->name('cadastrar.curriculo');
 Route::post('/formulario.store', [RegistroController::class, 'store'])->name('enviar'); 
-Route::get('/editar/{id?}', [RegistroController::class, 'edit']); 
+Route::get('/editar/{id?}', [RegistroController::class, 'edit'])->name('editar'); 
 Route::post('/atualizar/{id?}', [RegistroController::class, 'update'])->name('atualizaProduto');
 Route::get('/curriculos', [RegistroController::class, 'show'])->name('curriculos');
-Route::get('/deletar/{id?}', [RegistroController::class, 'destroy']);
+Route::get('/deletar/{id?}', [RegistroController::class, 'destroy'])->name('deletar');
 
 //Falta inserir: update, destroy
 
